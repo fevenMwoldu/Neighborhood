@@ -46,4 +46,17 @@ class Bussiness(models.Model):
     def delete_bussiness(self):
         self.delete()
 
+class Postcontent(models.Model):
+    content = models.CharField(max_length = 800)
+    neighbouhood_user = models.ForeignKey(NeighbourhoodUser)
+   
+
+    def __str__(self):
+        return self.content
+
+    def save_postcontent(self):
+        self.save()
+
+    def delete_postcontent(self):
+        self.delete()
 
