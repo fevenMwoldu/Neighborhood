@@ -1,0 +1,49 @@
+from django.db import models
+
+# Create your models here.
+
+class Neighbourhood(models.Model):
+    neighbourhood_name = models.CharField(max_length = 30)
+    neighbourhood_location = models.CharField(max_length =30)
+    occupants_count = models.IntegerField()
+
+    def __str__(self):
+        return self.neighbourhood_location
+
+    def save_neighbourhood(self):
+        self.save()
+
+    def delete_neighbourhood(self):
+        self.delete()
+
+class NeighbourhoodUser(models.Model):
+    username = models.CharField(max_length = 30)
+    user_id = models.IntegerField
+    user_email = models.CharField(max_length = 30)
+    neighbourhood = models.ForeignKey(Neighbourhood)
+
+    def __str__(self):
+        return self.username
+
+    def save_neighbourhooduser(self):
+        self.save()
+
+    def delete_neighbourhooduser(self):
+        self.delete()
+
+class Bussiness(models.Model):
+    bussiness_name = models.CharField(max_length = 30)
+    bussiness_email = models.CharField(max_length = 30)
+    neighbourhood = models.ForeignKey(Neighbourhood)
+    neighbourhood_user = models.ForeignKey(NeighbourhoodUser)
+
+    def __str__(self):
+        return self.bussiness_name
+
+    def save_bussiness(self):
+        self.save()
+
+    def delete_bussiness(self):
+        self.delete()
+
+
