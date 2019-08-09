@@ -47,6 +47,11 @@ class Bussiness(models.Model):
     def delete_bussiness(self):
         self.delete()
 
+    @classmethod
+    def search_by_bussinessname(cls,search_term):
+        bussinesses = cls.objects.filter(bussiness_name__icontains=search_term)
+        return bussinesses
+
 class Postcontent(models.Model):
     content = models.CharField(max_length = 800)
     neighbouhood_user = models.ForeignKey(NeighbourhoodUser)

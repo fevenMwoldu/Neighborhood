@@ -25,5 +25,19 @@ def index(request):
     bussinesses = Bussiness.objects.all()
     return render(request, 'index.html',{"contents" : contents,"bussinesses" : bussinesses,"letterForm":form})
 
+
+def search_results(request):
+
+    if 'search_term' in request.GET and request.GET["search_term"]:
+        search_term = request.GET.get("search_term")
+        searched_bussinesses = Bussiness.search_by_bussinessname(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"bussinesses": searched_bussinesses})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+
     
    
