@@ -1,4 +1,27 @@
-{%extends 'base.html'%} {% block content %}{{ block.super}}
+{%extends 'base.html'%} {% load bootstrap4 %}{% block content %}{{ block.super}}
 
 <h1 style="text-align: center"> NEIGHBOURHOOD</h1>
+
+
+{% for content in contents %}
+
+<h3>{{content.neighbouhood_user}}</h3>
+<p>{{content.content}}</p>
+
+{% endfor %} {% for bussiness in bussinesses %}
+
+<h3>{{ bussiness.bussiness_name }}</h3>
+<p>{{ bussiness.neighbourhood}}</p>
+
+
+{% endfor %}
+
+<div class="container-fluid">
+
+    <form action="{%url 'index'%}" method="post">
+        {%csrf_token%} {% bootstrap_form letterForm layout='inline' %}
+        <input type="submit" value="Subscribe">
+    </form>
+
+</div>
 {% endblock %}
