@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Neighbourhood(models.Model):
@@ -59,4 +60,23 @@ class Postcontent(models.Model):
 
     def delete_postcontent(self):
         self.delete()
+
+class Profile(models.Model):
+    User_bio = models.CharField(max_length =300)
+    neighbouhood = models.ForeignKey(Neighbourhood)
+    neighbouhood_user = models.ForeignKey(NeighbourhoodUser)
+   
+
+    def __str__(self):
+        return self.User_bio
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+class NeighbourhoodLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
 
