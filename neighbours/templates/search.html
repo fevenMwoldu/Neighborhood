@@ -6,7 +6,7 @@
 
     <div class="row">
         {% if bussinesses %}
-        <h2>Found {{ bussinesses|length }} bussiness of {{search_term}}</h2>
+        <h2>Found {{ bussinesses|length }} item of {{search_term}}</h2>
         {% else %}
         <h2> {{message}}</h2>
         {% endif %}
@@ -16,12 +16,23 @@
     <div class="row">
 
         {% if bussinesses %} {% for bussiness in bussinesses %}
-        <div class="col-sm-6 col-md-3">
-            <h1>{{bussiness.bussiness_name}}</h1>
-            <p>{{ bussiness.neighbourhood}}</p>
 
 
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+                <h1>{{bussiness.name}}</h1>
+                <p class="card-text">{{bussiness.email}}</p>
+                <p class="card-text">{{bussiness.telephone}}</p>
+                <p class="card-text">{{bussiness.address}}</p>
+
+            </div>
         </div>
+
+
+
+
         {% endfor %} {% else %}
         <p>no result found</p>
         {% endif %}
