@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from django.contrib.auth import views 
+from neighbours import views as my_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'',include('neighbours.urls'))
+    url(r'',include('neighbours.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^logout/$', views.logout, {"next_page": '/'}),
+    url(r'^profile/$', my_views.add_profile, name='add-profile'),
+    url(r'^post/$', my_views.add_post, name='add-post'),
+    url(r'^bussiness/$', my_views.add_bussiness, name='add-bussiness'),
+    url(r'^changeNeighbourhood/$', my_views.change_neighbourhood,name='change-neighbourhood')
 ]
