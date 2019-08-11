@@ -29,8 +29,13 @@
                             <a href="{%url 'index'%}" style="color: black">Home</a>
                         </li>
                         <li>
-                            <a href="" style="color: black">Add Neighbourhood</a>
+                            <a href="{%url 'add-post'%}" style="color: black">Add post</a>
                         </li>
+                        {% if is_admin %}
+                        <li>
+                            <a href="{%url 'add-bussiness'%}" style="color: black">Add bussiness</a>
+                        </li>
+                        {% endif %}
                         <li>
                             <a href="/accounts/password/change" style="color: black">Change Password</a>
                         </li>

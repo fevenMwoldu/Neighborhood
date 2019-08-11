@@ -1,27 +1,22 @@
 {%extends 'base.html'%} {% load bootstrap4 %}{% block content %}{{ block.super}}
 
-<h1 style="text-align: center"> NEIGHBOURHOOD</h1>
+<h1 style="text-align: center">Posts from your neighbourhood, {{neighbourhood}}</h1>
 
 
-{% for content in contents %}
-
-<h3>{{content.neighbouhood_user}}</h3>
-<p>{{content.content}}</p>
-
-{% endfor %} {% for bussiness in bussinesses %}
-
-<h3>{{ bussiness.bussiness_name }}</h3>
-<p>{{ bussiness.neighbourhood}}</p>
+{% for post in posts %}
 
 
-{% endfor %}
-
-<div class="container-fluid">
-
-    <form action="{%url 'index'%}" method="post">
-        {%csrf_token%} {% bootstrap_form letterForm layout='inline' %}
-        <input type="submit" value="Subscribe">
-    </form>
-
+<div class="card" style="width: 18rem;">
+    <img src="{{post.post_pic.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.content}}</p>
+        <p class="card-text">{{post.created_on}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
 </div>
-{% endblock %}
+
+
+{% empty %}
+<p style="text-align: center">No posts from your neighbourhood.</p>
+{% endfor %} {% endblock %}
