@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+'''
+    Neighbourhood model class
+'''
+
 class Neighbourhood(models.Model):
     name = models.CharField(max_length = 30)
     location = models.CharField(max_length =30)
@@ -19,6 +23,11 @@ class Neighbourhood(models.Model):
 
     def delete_neighbourhood(self):
         self.delete()
+
+
+'''
+    CustomUser model class
+'''
 
 class CustomUser(models.Model):
     first_name = models.CharField(max_length = 30)
@@ -45,6 +54,11 @@ class CustomUser(models.Model):
         profiles = CustomUser.objects.filter(user_id=user_id)
         return len(profiles) > 0
 
+
+'''
+    Bussiness model class
+'''
+
 class Bussiness(models.Model):
     name = models.CharField(max_length = 30)
     email = models.CharField(max_length = 30)
@@ -66,13 +80,18 @@ class Bussiness(models.Model):
 
     @classmethod
     def search_by_name(cls,search_term):
-        bussinesses = cls.objects.filter(name__icontains=search_term)
+        bussinesses = cls.objects.filter(name__icontains=search_term) | cls.objects.filter(category__icontains=search_term)
         return bussinesses
 
     @classmethod
     def search_by_category(cls, search_term):
         bussinesses = cls.objects.filter(name__icontains=search_term)
         return bussinesses
+
+
+'''
+    Post model class
+'''
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
