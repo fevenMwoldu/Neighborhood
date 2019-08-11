@@ -3,7 +3,9 @@ from .models import Neighbourhood,CustomUser,Bussiness,Post,User
 
 # Create your tests here.
 
-
+'''
+    Testing Neighbourhood model class
+'''
 class NeighbourhoodTestClass(TestCase):
 
     # Set up method
@@ -26,6 +28,9 @@ class NeighbourhoodTestClass(TestCase):
         Neighbourhood.delete_neighbourhood
 
 
+'''
+    Testing CustomUser model class
+'''
 class CustomUserTestClass(TestCase):
 
     # Set up method
@@ -50,6 +55,9 @@ class CustomUserTestClass(TestCase):
         CustomUser.delete_customuser
         
 
+'''
+    Testing Bussiness model class
+'''
 
 class BussinessTestClass(TestCase):
 
@@ -77,6 +85,9 @@ class BussinessTestClass(TestCase):
         Bussiness.delete_bussiness
         
 
+'''
+    Testing Post model class
+'''
 
 class PostTestClass(TestCase):
         # Set up method
