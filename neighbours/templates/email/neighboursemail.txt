@@ -1,3 +1,8 @@
 Hello {{name}}
 
-Welcome to the Neighbourhood news.
+Welcome to the Neighbourhood.
+
+Thank you for regitering in our website.
+
+Best Regards,
+Neighbourhood
