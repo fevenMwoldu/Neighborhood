@@ -2,21 +2,25 @@
 
 <h1 style="text-align: center">Posts from your neighbourhood, {{neighbourhood}}</h1>
 
+<div class="container" style="align-content:center">
 
-{% for post in posts %}
+    {% for post in posts %}
 
 
-<div class="card" style="width: 18rem;">
-    <img src="{{post.post_pic.url}}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{post.title}}</h5>
-        <p class="card-text">{{post.content}}</p>
-        <p class="card-text">{{post.created_on}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="card mb-3" style="width: 70rem;">
+        <img src="{{post.post_pic.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.content}}</p>
+            <p class="card-text">{{post.created_on}}</p>
+
+        </div>
     </div>
+
+
+
+    {% empty %}
+    <p style="text-align: center">No posts from your neighbourhood.</p>
+    {% endfor %}
 </div>
-
-
-{% empty %}
-<p style="text-align: center">No posts from your neighbourhood.</p>
-{% endfor %} {% endblock %}
+{% endblock %}
