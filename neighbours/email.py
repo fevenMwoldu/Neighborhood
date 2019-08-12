@@ -16,4 +16,4 @@ def send_welcome_email(name,receiver):
         msg.send()
     except:
         import sys
-        print(sys.exec_info())
+        print(sys.exc_info())
